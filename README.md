@@ -5,7 +5,7 @@
 1、克隆原代码及安装依赖包
 ```
 #克隆本仓库
-git clone xxx.
+git clone https://github.com/kruzabc/vue-admin-ts
 ```
 ```
 #安装依赖
