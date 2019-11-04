@@ -1,7 +1,7 @@
 {
   "defaultSeverity": "warning",
   "extends": [
-    "tslint:recommended"
+    "tslint-config-alloy"
   ],
   "linterOptions": {
     "exclude": [
@@ -9,11 +9,45 @@
     ]
   },
   "rules": {
-    "indent": [true, "spaces", 2],
-    "interface-name": false,
-    "no-consecutive-blank-lines": false,
-    "object-literal-sort-keys": false,
+    "import-spacing": false,
+    "space-before-function-paren": false,
+    "whitespace": false,
+    "typedef-whitespace": false,
+    "jsdoc-format": false,
+    "no-implicit-dependencies": false,
+    "import-blacklist": true,
     "ordered-imports": false,
-    "quotemark": [true, "single"]
+    // 关闭import 必须排序
+    "no-console": false,
+    //可以使用console.log
+    "no-consecutive-blank-lines": [
+      true,
+      2
+    ],
+    // 4个空格缩进
+    "indent": [true, "spaces", 4],
+    // 无效空行最多2行
+    "no-magic-numbers": false,
+    //关闭魔法数字
+    "linebreak-style": false,
+    // 换行符号不限制
+    "interface-over-type-literal": false,
+    // 可以使用type约定，而不是interface
+    "comment-format": [
+      false
+    ],
+    "member-access": false,
+    // 类成员可以不必须被标记为 public  private 和 protected
+    "no-inferrable-types": [
+      true,
+      "ignore-params",
+      "ignore-properties"
+    ],
+    // 类型推断允许写类型
+
+    // tslint 可以不传第二个参数
+    "radix": false,
+    "prefer-for-of": false, // 不使用for-of
+    "no-var-requires": false // 可以使用require
   }
 }

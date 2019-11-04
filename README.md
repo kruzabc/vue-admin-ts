@@ -1,29 +1,25 @@
-# vuecli4-demo
+# admin
+`基于的VueCli4 + TypeScipt的多项目后台管理系统`
 
-## Project setup
+## 一、项目初始化
+1、克隆原代码及安装依赖包
 ```
+#克隆本仓库
+git clone xxx.
+```
+```
+#安装依赖
 npm install
 ```
+2、修改相关配置
 
-### Compiles and hot-reloads for development
+将`.env.development`的运行端口设置成自己的
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+#网页运行端口：
+SEVER_PORT_APP1 = 8086
 ```
 
-### Run your tests
+3、运行默认项目1
 ```
-npm run test
+npm run start-app1
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,0 +1,39 @@
+//@media screen and (max-width: 1200px){
+//    .app-wrapper .app-sidebar {
+//        width: 150px;
+//    }
+//    .app-wrapper .app-main-area{
+//        width: calc(100% - 150px);
+//        left: 150px;
+//    }
+//}
+
+/* 小于900px */
+@media screen and (max-width: 1000px){
+    .app-wrapper .app-header .head-menu{
+        display: none;
+        float: right;
+        position: absolute;
+        background-color: #0f3469;
+        top: 70px;
+        right: 20px;
+        overflow: hidden;
+        .item{
+            float: none;
+            .link{
+                line-height: 45px;
+                &.active::after,
+                &:hover::after{
+                    width: 56px;
+                    height: 2px;
+                }
+            }
+        }
+    }
+    .app-wrapper .app-header .head-menu.show{
+        display: block;
+    }
+    .app-wrapper .app-header  .fold-menu{
+        display: block;
+    }
+}

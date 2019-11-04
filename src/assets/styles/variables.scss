@@ -1,0 +1,24 @@
+$common-bg : #f1f2f3; //基础背景色颜色
+
+$base-font-family : -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif; //字体
+$base-font-size : 14PX; //基础字体大小
+$base-font-color : #333; //基础字体颜色
+
+
+$base-border-color: #ddd;
+
+$theme-font-color : #6094e0; // 风格颜色
+
+$input-border-color: #ccc;
+
+$btn-color: #fff;
+
+
+/* fixed元素的层级变量 */
+$z-index-header: 2000; // header栏
+
+$z-index-normal1: 3001; // 用于页面元素的zIndex
+$z-index-normal2: 3002;
+$z-index-normal3: 3003;
+$z-index-normal4: 3004;
+$z-index-normal5: 3005;

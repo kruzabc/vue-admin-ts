@@ -1,0 +1,84 @@
+@import "./variables";
+
+* {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: 1.2;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+p,span,h1,h2,h3,h4,h5,h6{
+    color: $base-font-color;
+}
+
+:after, :before {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #fff;
+}
+
+body {
+    background-color: $common-bg;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+}
+
+body, p {
+    padding: 0;
+    margin: 0;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    display: block;
+}
+
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+img {
+    vertical-align: top
+}
+
+a img {
+    border: 0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    outline: 0;
+}
+
+/*input:focus,textarea:focus{outline:0;}*/
+table {
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+ul {
+    list-style-type: none;
+    -webkit-list-style-position: inside;
+    -moz-list-style-position: inside;
+    -ms-list-style-position: inside;
+    -o-list-style-position: inside;
+}
+
+li {
+    list-style-type: none;
+}
