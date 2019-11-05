@@ -191,6 +191,15 @@
                 cooperateStartTime: '2019-10-10',
                 cooperateEndTime: '2020-10-10',
                 status: 0
+            }, {
+                idx: 4,
+                instituteShortName: '吉的堡',
+                instituteFullName: '上海吉的堡英语教育',
+                businessLicenseNumber: '84985***37674',
+                area: '上海浦东',
+                cooperateStartTime: '2019-10-11',
+                cooperateEndTime: '2020-10-11',
+                status: 0
             }];
             this.tableData.count = 3;
         }
