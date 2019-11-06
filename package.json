@@ -5,6 +5,7 @@
   "scripts": {
     "start-app1": "node cmd/run_project.js -p app1 -m serve",
     "build-app1": "node cmd/run_project.js -p app1 -m build",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -26,7 +27,7 @@
     "@vue/cli-service": "^4.0.5",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
-    "typescript": "~3.6.4",
+    "typescript": "~3.7.2",
     "vue-template-compiler": "^2.6.10",
     "tslint-config-alloy": "^0.2.1"
   },
