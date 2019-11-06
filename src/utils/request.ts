@@ -1,10 +1,11 @@
 import axios from 'axios';
 import store from '@/store';
+import { HttpResponseCode } from '@/utils/types';
 
 const service = axios.create({
     timeout: 15000, // 请求超时时间
     withCredentials: true, // 允许跨域携带cookie
-    headers: { // 默认配置请求头，请求格式为application/json
+    headers: { // 默认配置请求头
         'Content-Type': 'application/json;charset=UTF-8',
         'Accept': 'application/json'
     }
@@ -28,20 +29,16 @@ service.interceptors.response.use(
             return response;
         }
         const resCode = response.data.code;
-        if (resCode === '200004') {  // 无登录权限
-            store.dispatch('DeletePermissionList'); // 清除权限数据
-            localStorage.getItem('access_token'); // 清除token
-            location.reload();
-            return Promise.reject('permission error');
-        } else if (resCode === '200005') { // 权限不足
-            // @ts-ignore
+        if (resCode === HttpResponseCode.NO_LOGIN) {  // 无登录权限
+            return Promise.reject('need login');
+        } else if (resCode === HttpResponseCode.NO_AUTH) { // 权限不足
             window.ELEMENT.Message.error('接口权限不足');
+            return Promise.reject('permission error');
         }
         return response.data;
     },
     (error: any) => {
-        // @ts-ignore
-        if (window.Element) {
+        if (window.ELEMENT) {
             if (error.message.indexOf('timeout') >= 0) {
                 window.ELEMENT.Message.error('请求超时,接口:',error.config.url);
                 //console.log('请求超时,接口:', error.config.url);

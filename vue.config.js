@@ -1,32 +1,22 @@
-const webpack = require("webpack");
-const chalk = require("chalk");
-const path = require("path");
-const dayjs = require("dayjs");
-const projectConfig = require("./config/projectConfig.js");
+const webpack = require('webpack');
+const chalk = require('chalk');
+const path = require('path');
+const dayjs = require('dayjs');
 
-const {
-    NODE_ENV: nodeEnv,
-    RUN_PROJECT_NAME: runProjectName,
-    API_ENV: apiEnv,
-} = process.env;
+const isProductionEnv = process.env.nodeEnv === 'production';
+const isDevelopmentEnv = process.env.nodeEnv === 'development';
 
-const isProductionEnv = nodeEnv === 'production';
-const isDevelopmentEnv = nodeEnv === 'development';
-
-const runPort = process.env['SEVER_PORT_' + runProjectName.toUpperCase()]; // 网页运行端口
-const apiProxyPath = process.env['DEV_PROXY_' + runProjectName.toUpperCase() + '_' + apiEnv]; // API代理到端口
+const runPort = process.env.SEVER_PORT_APP1; // API代理到端口
+const apiProxyPath = process.env['DEV_PROXY_' + process.env.API_ENV]; // API代理到端口
 
 if (isDevelopmentEnv) {
-    console.log(chalk.green(`正在【开发模式】下启动 【 ${runProjectName} 】项目,当前API接口环境：【${["正式环境", "测试环境", "本地环境"][process.env.API_ENV] } 】`));
-    console.log(`API代理到：${ apiProxyPath }`);
+    console.log(chalk.green(`正在【开发模式】下启动 ,当前API接口环境：【${["正式环境", "测试环境", "本地环境"][process.env.API_ENV]} 】`));
+    console.log(`API代理到：${apiProxyPath}`);
 } else if (isProductionEnv) {
-    console.log(chalk.green(`正在【生产模式】下编译 【 ${ runProjectName } 】项目`));
+    console.log(chalk.green(`正在【生产模式】下编译`));
 }
 
-const sepProjConf = projectConfig[runProjectName];
-
 module.exports = {
-    ...sepProjConf, // 配置
     lintOnSave: true,
     productionSourceMap: false,
     chainWebpack: config => {
@@ -45,12 +35,12 @@ module.exports = {
             'element-ui': '"element-ui"'
         });
         /* 设置别名*/
-        config.resolve.alias
-            .set('@project', path.join(__dirname, `src/projects/${process.env.RUN_PROJECT_NAME}`));
+        //config.resolve.alias
+        //   .set('@project', path.join(__dirname, `src/projects/${process.env.RUN_PROJECT_NAME}`));
     },
     css: {
         extract: isProductionEnv,
-        sourceMap: isProductionEnv,
+        sourceMap: !isProductionEnv,
         loaderOptions: {
             sass: {
                 // 这里假设你有 `variables.scss` 这个文件
@@ -64,8 +54,7 @@ module.exports = {
             let pluginsList = [new webpack.SourceMapDevToolPlugin({})];
 
             pluginsList.push(new webpack.DefinePlugin({
-                'FLAG_BUILD_VERSION': JSON.stringify(`1.0.0_${dayjs(new Date()).format("MMDDHHmm")}_${isProductionEnv ? "re" : "dev"}`),
-                'RUN_PROJECT_NAME': JSON.stringify(runProjectName),
+                'BUILD_VERSION': JSON.stringify(`1.0.0_${dayjs(new Date()).format("MMDDHHmm")}_${isProductionEnv ? "re" : "dev"}`),
             }));
             return pluginsList;
         })(),
@@ -78,7 +67,7 @@ module.exports = {
         proxy: {
             '/api/': {
                 pathRewrite: {'^/api': ''},
-                ws: false, // proxy websockets
+                ws: false,
                 target: apiProxyPath,
                 changeOrigin: true,
             },

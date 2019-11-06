@@ -54,6 +54,5 @@ declare global {
             }
         }; // 具体定义参考vue.config.js
     }
-    const FLAG_BUILD_VERSION: string; // 预定义的常量（具体见vue.config.js）, 编译时间版本
-    const RUN_PROJECT_NAME: 'baodun' | 'organization'; // 预定义的常量（具体见vue.config.js）， 可选值: 'baodun'|'organization'
+    const BUILD_VERSION: string; // 预定义的常量（具体见vue.config.js）, 编译时间版本
 }

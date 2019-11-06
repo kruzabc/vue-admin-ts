@@ -1,5 +1,5 @@
 # admin
-`基于的VueCli4 + TypeScipt的多项目后台管理系统`
+`基于的VueCli4 + TypeScipt3.7的多项目后台管理系统`
 
 ## 一、项目初始化
 1、克隆原代码及安装依赖包
