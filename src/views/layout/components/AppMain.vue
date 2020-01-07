@@ -1,6 +1,6 @@
 <template>
     <div class="app-main-area" id="appMainArea">
-        <div class="content">
+        <div class="app-content">
             <section class="main-format-section">
                 <router-view v-if="!noPermission"></router-view>
                 <div class="text-center" v-if="noPermission">

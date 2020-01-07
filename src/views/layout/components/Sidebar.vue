@@ -8,13 +8,13 @@
                         <i class="menu-icon"></i>
                         <span class="cap-text">{{item.name}}</span>
                     </a>
-                    <ul class="nav-menu-list-fold" v-if="item.active">
-                        <li class="fold-item" v-for="(child,index2) in item.children">
-                            <a @click.stop="clickSubMenu(index,index2, child.href, $event)" :href="child.href"
-                               onclick="javascript:return false;"
-                               :class="{active: child.active}">{{child.name}}</a>
-                        </li>
-                    </ul>
+<!--                    <ul class="nav-menu-list-fold" v-if="item.active">-->
+<!--                        <li class="fold-item" v-for="(child,index2) in item.children">-->
+<!--                            <a @click.stop="clickSubMenu(index,index2, child.href, $event)" :href="child.href"-->
+<!--                               onclick="javascript:return false;"-->
+<!--                               :class="{active: child.active}">{{child.name}}</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
                 </li>
             </ul>
         </div>
@@ -33,7 +33,6 @@
         id: number; // id
         active: boolean;
         href: string | undefined;
-        children: Array<any>;
     };
 
     @Component
@@ -62,42 +61,48 @@
                         continue;
                     }
                     const obj = find.data[i];
+
+                    if(!(obj.children && obj.children.length > 0)){
+                        return;
+                    }
+                    const child = obj.children[0];
+
+                    // console.log(obj);
                     // todo 暂不开启权限
                     // 如果不在权限列表里面就跳过
                     // if(this.permission.indexOf(obj.id) < 0){
                     //     continue;
                     // }
-                    let children: Array<NavConfigType> = [];
-                    let flagCount = 0;
-                    if (obj.children && obj.children.length > 0) {
-                        for (const j in obj.children) {
-                            if (!obj.children.hasOwnProperty(j)) {
-                                continue;
-                            }
-                            // todo 暂不开启权限
-                            // 如果不在权限列表里面就跳过
-                            // if(this.permission.indexOf(obj.children[j].id) < 0){
-                            //     continue;
-                            // }
-                            let flag: boolean = obj.children[j].id === Number(this.$route.meta.id); // id匹配则点选中
-                            if (flag) {
-                                flagCount++;
-                            }
-                            children.push({
-                                name: obj.children[j].name,
-                                id: obj.children[j].id,
-                                href: obj.children[j].href,
-                                active: flag,
-                                children: []
-                            });
-                        }
-                    }
+                    // let children: Array<NavConfigType> = [];
+                    // let flagCount = 0;
+                    // if (obj.children && obj.children.length > 0) {
+                    //     for (const j in obj.children) {
+                    //         if (!obj.children.hasOwnProperty(j)) {
+                    //             continue;
+                    //         }
+                    //         // todo 暂不开启权限
+                    //         // 如果不在权限列表里面就跳过
+                    //         // if(this.permission.indexOf(obj.children[j].id) < 0){
+                    //         //     continue;
+                    //         // }
+                    //         let flag: boolean = obj.children[j].id === Number(this.$route.meta.id); // id匹配则点选中
+                    //         if (flag) {
+                    //             flagCount++;
+                    //         }
+                    //         // children.push({
+                    //         //     name: obj.children[j].name,
+                    //         //     id: obj.children[j].id,
+                    //         //     href: obj.children[j].href,
+                    //         //     active: flag,
+                    //         //     children: []
+                    //         // });
+                    //     }
+                    // }
                     list.push({
-                        name: obj.name,
-                        id: obj.id,
-                        href: obj.href || '',
-                        active: flagCount > 0, // 子项选中，父级项也选中
-                        children
+                        name: child.name,
+                        id: child.id,
+                        href: child.href || '',
+                        active: false // 子项选中，父级项也选中
                     });
                 }
                 this.navSideConfigList = list;

@@ -10,29 +10,28 @@
 
 /*重置input*/
 .el-input{
-    height: 28px;
+    height: $input-height;
     display: inline-block;
     .el-input__inner{
-        width: 100%;
-        height: 100%;
-        padding: 0 5px;
-        line-height: 26px;
-        border-radius: 2px;
-        border-color: #dee3f0;
-        color: #333;
+        padding: 0 10px 0 14px;
+        line-height: $input-height;
+        border-radius: $input-border-radius;
+        border-color: $input-border-color;
+        color: $base-font-color;
         &:focus,
         &:hover{
-            border-color: #dee3f0;
+            border-color: $input-border-color;
         }
-    }
-    .el-textarea__inner{
-        padding: 5px;
     }
 }
 
 .el-textarea{
+    display: inline-block;
     .el-textarea__inner{
-        padding: 5px;
+        border-radius: $input-border-radius;
+        border-color: $input-border-color;
+        color: $base-font-color;
+        padding: 5px 10px;
     }
 }
 
@@ -279,7 +278,6 @@
 	}
 }
 
-//
 .el-tooltip__popper.poshytips{
     max-width: 300px;
     line-height: 1.2;

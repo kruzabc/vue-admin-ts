@@ -3,11 +3,13 @@ const chalk = require('chalk');
 const path = require('path');
 const dayjs = require('dayjs');
 
-const isProductionEnv = process.env.nodeEnv === 'production';
-const isDevelopmentEnv = process.env.nodeEnv === 'development';
+const isProductionEnv = process.env.NODE_ENV === 'production';
+const isDevelopmentEnv = process.env.NODE_ENV === 'development';
 
-const runPort = process.env.SEVER_PORT_APP1; // API代理到端口
+
+const runPort = process.env.SEVER_PORT; // API代理到端口
 const apiProxyPath = process.env['DEV_PROXY_' + process.env.API_ENV]; // API代理到端口
+
 
 if (isDevelopmentEnv) {
     console.log(chalk.green(`正在【开发模式】下启动 ,当前API接口环境：【${["正式环境", "测试环境", "本地环境"][process.env.API_ENV]} 】`));

@@ -1,27 +1,19 @@
 <template>
     <header class="app-header clearfix">
-        <a class="image-icon" href="/">
-            <img src="@/assets/images/fengkongLogin.png" width="225" height="70" alt="logo">
-        </a>
-        <ul class="head-menu" :class="{show: showFoldDetail}">
-            <li class="item" v-for="(item,index) in dataArr" :key="index">
-                <a class="link" :class="{active: item.isSelected}" @click="clickMenu(item.id)" :href="item.href" onclick="javascript:return false;">{{item.name}}</a>
-            </li>
+        <div class="l-part">
+            <a class="image-icon" href="/">
+                <img src="@/assets/images/head_icon.png" width="130" alt="logo">
+            </a>
+
+            <span class="welcome-text">
+                欢迎  FC0001-张天方  进入丰仓创新基金后台管理系统
+            </span>
+        </div>
+
+        <ul class="right-menu">
+            <li class="item">修改密码</li>
+            <li class="item">安全退出</li>
         </ul>
-
-        <div class="fold-menu" :class="{active : showFoldDetail}" @click.stop="clickFoldItem">
-        </div>
-        <div class="right-info" :class="{active: isShowPopPanel}" @click.stop="clickOnUser">
-            <span class="name">{{userName}}</span>
-
-        </div>
-
-        <div class="pop-panel">
-            <ul class="clearfix top-menu">
-                <li class="left"><a @click="exitLogin">安全退出</a></li>
-            </ul>
-            <p class="sp-info">IP:{{ip}}</p>
-        </div>
     </header>
 </template>
 

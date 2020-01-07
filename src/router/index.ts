@@ -1,16 +1,16 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import demoRouterModule from './modules/demoRouterModule'; // 用户
+import mainRouterModule from './modules/mainModule'; // 用户
 
 Vue.use(Router);
 
 const constantRouterMap = [
-    ...demoRouterModule,
+    ...mainRouterModule,
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/views/login.vue')
+        component: () => import('../views/login.vue')
     },
     {
         path: '*',

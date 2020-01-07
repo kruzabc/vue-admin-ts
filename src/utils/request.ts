@@ -15,7 +15,7 @@ const service = axios.create({
 service.interceptors.request.use((config: any) => {
     const token = localStorage.getItem('access_token') || '';
     if (token) {
-        config.headers.accessToken = token;
+        config.headers.token = token;
     }
     return config;
 }, (error: any) => {
@@ -57,9 +57,23 @@ service.interceptors.response.use(
 export type RequestSetting = {
     paramType?: 'json' | 'form';  // 请求参数类型
     responseType?: 'arraybuffer' | 'pdf' | '';  // 返回参数类型
-    proxyType?: 'api' | 'newApi';  // 代理组的名字
+    proxyType?: 'api';  // 代理组的名字
     domain?: string; // domain (有domain 则 proxyType将不生效)
 };
+
+/* get 接口 */
+export type TYPE_GET_METHOD = (
+    path: string,
+    params?: object,
+    setting ?: RequestSetting
+) => any;
+
+/* post 接口 */
+export type TYPE_POST_METHOD = (
+    path: string,
+    params ?: object,
+    paramType ?: RequestSetting
+) => any;
 
 const defaultRequestSetting: RequestSetting = {
     paramType: 'json',
