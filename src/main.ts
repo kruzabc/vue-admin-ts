@@ -19,9 +19,6 @@ Vue.config.productionTip = false;
 Vue.prototype.$get = request.get;
 Vue.prototype.$post = request.post;
 
-// viewer组件
-// Vue.use(Viewer);
-
 // import {showLoading, closeLoading, showToast, showMessageBox, showMessagePanel} from '@/utils/ui';
 
 Vue.prototype.$showLoading = showLoading; // loading
