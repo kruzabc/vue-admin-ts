@@ -73,7 +73,7 @@
                 console.error('找不到对应模块，模块id:', this.moduleId);
                 return;
             }
-            
+
             for (const it in secModuleMap.children) { // 遍历二级模块
                 if (!secModuleMap.children.hasOwnProperty(it)) {
                     continue;
@@ -159,7 +159,6 @@
         }
 
         clickMenu(data: NavConfigType) {
-            debugger
             if (data.children && data.children.length) {
                 data.active = !data.active;
             } else if (data.href === this.$route.path) {

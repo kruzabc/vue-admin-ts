@@ -167,7 +167,7 @@
         onPagerClick(event: any, num: number) {
             const currentPage = this.currentPage;
             if (num === currentPage) {
-
+                // TODO
             } else {
                 this.current = num;
                 this.emitChange();
