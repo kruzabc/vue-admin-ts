@@ -2,7 +2,6 @@
 import {Component, Vue} from 'vue-property-decorator';
 import MyPagination from '@/components/MyPagination.vue';
 import dayjs from  'dayjs';
-// import { getDefaultListTableData } from './commonData';
 
 @Component({
     components: {

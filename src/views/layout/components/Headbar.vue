@@ -6,7 +6,7 @@
             </a>
 
             <span class="welcome-text">
-                欢迎  FC0001-张天方  进入丰仓创新基金后台管理系统
+                欢迎进入后台管理系统
             </span>
         </div>
 

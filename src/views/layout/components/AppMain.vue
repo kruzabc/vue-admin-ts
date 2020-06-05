@@ -1,6 +1,7 @@
 <template>
     <div class="app-main-area" id="appMainArea">
         <div class="app-content">
+            <my-breadcrumb />
             <section class="main-format-section">
                 <router-view v-if="!noPermission"></router-view>
                 <div class="text-center" v-if="noPermission">
@@ -14,8 +15,11 @@
 
 <script lang="ts">
     import {Component, Provide, Vue} from 'vue-property-decorator';
+    import MyBreadcrumb from '@/components/MyBreadcrumb.vue';
+
     @Component({
         components: {
+            MyBreadcrumb
         }
     })
     export default class AppMain extends Vue {

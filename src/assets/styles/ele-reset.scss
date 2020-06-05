@@ -9,25 +9,41 @@
 //
 
 /*重置input*/
-.el-input{
+.el-input {
     height: $input-height;
     display: inline-block;
-    .el-input__inner{
-        padding: 0 10px 0 14px;
+
+    .el-input__inner {
+        padding: 0 10px 0 10px;
         line-height: $input-height;
+        height: $input-height;
         border-radius: $input-border-radius;
         border-color: $input-border-color;
         color: $base-font-color;
+
         &:focus,
-        &:hover{
+        &:hover {
             border-color: $input-border-color;
+        }
+    }
+
+    .el-input__icon {
+        line-height: $input-height;
+
+        &::before {
+            color: #bfcbd9;
         }
     }
 }
 
-.el-textarea{
+.el-date-editor .el-input__prefix {
+    top: 0;
+}
+
+.el-textarea {
     display: inline-block;
-    .el-textarea__inner{
+
+    .el-textarea__inner {
         border-radius: $input-border-radius;
         border-color: $input-border-color;
         color: $base-font-color;
@@ -35,274 +51,293 @@
     }
 }
 
-.form-style .input-text > .el-input{
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    .el-input__inner{
-        padding: 0;
-        border: none;
-        height: 26px;
-        line-height: 26px;
-        width: 100%;
+.el-breadcrumb {
+    .el-breadcrumb__inner {
+        font-weight: normal;
+        font-size: 13px;
+        //color: 333;
+
+        //&.is-link {
+        //    cursor: pointer;
+        //    font-weight: normal;
+        //    font-size: 13px;
+        //    color: $theme-font-color;
+        //
+        //    &:hover {
+        //        cursor: pointer;
+        //        color: $theme-font-color;
+        //    }
+        //}
+    }
+
+    .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+        &:hover {
+            color: $theme-font-color;
+        }
+
+        color: $theme-font-color;
+    }
+
+    .el-breadcrumb__separator {
+        margin: 0 2px;
+    }
+
+    .cap > .el-breadcrumb__separator {
+        margin: 0 6px;
+
+        &::before {
+            content: ":";
+        }
     }
 }
 
 /* 禁用样式下 */
-.el-input.is-disabled .el-input__inner{
-    background-color: #ccc;
+.el-input.is-disabled .el-input__inner {
+    background-color: #eee;
+    border-color: #ccc;
     color: #333;
 }
-.el-input.is-disabled .el-input__inner::placeholder{
+
+.el-input.is-disabled .el-input__inner::placeholder {
     color: #aaa;
 }
-.el-radio__input.is-disabled+span.el-radio__label{
+
+.el-radio__input.is-disabled + span.el-radio__label {
     color: #999;
 }
 
+.el-textarea.is-disabled .el-textarea__inner{
+    background-color: #eee;
+}
+
 /* 重置select */
-.el-select{
-    height: 28px;
-    border-radius: 2px;
+.el-select {
+    height: $input-height;
+    border-radius: $input-border-radius;
     outline: none;
-    .el-input{
-        height: 28px;
+
+    .el-input__inner {
+        border-color: $input-border-color;
     }
-    .el-input__inner{
-        border: 1px solid #dee3f0;
-        &::placeholder,
-        &::-webkit-input-placeholder{
-            line-height: 28px;
-            color: #333;
-        }
+
+    .el-input.is-focus .el-input__inner {
+        border-color: $input-border-color;
     }
-    .el-icon-arrow-up:before{
+
+    .el-icon-arrow-up:before {
         content: '';
         position: absolute;
-        top: 10px;
-        left: 14px;
-        border-top: 6px solid #333;
-        border-bottom: 3px solid transparent;
-        border-left: 3px solid transparent;
-        border-right: 3px solid  transparent;
+        top: 15px;
+        left: 8px;
+        border-top: 6px solid #bfcbd9;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
     }
 }
+
 .el-select .el-input .el-select__caret,
-.el-select .el-input .el-select__caret.is-reverse{
-    transform: none !important;
-    transition: none !important;
+.el-select .el-input .el-select__caret.is-reverse {
+    //transform: none !important;
+    //transition: none !important;
+}
+
+.el-select-dropdown__item.selected{
+    color: $theme-font-color;
+}
+
+/* 重置el-radio-button */
+.el-radio-button__orig-radio:checked+.el-radio-button__inner{
+    background-color: $theme-font-color;
+    border-color: $theme-font-color;
+}
+
+.el-radio-button__inner:hover{
+    color: $theme-font-color;
+}
+
+.el-radio-button__inner{
+    border-color: $base-border-color;
 }
 
 /* 地址组件 */
-.my-address-picker{
+.my-address-picker {
     border: 1px solid transparent;
     display: inline-block;
 }
-.el-form-item.is-error .my-address-picker{
+
+.el-form-item.is-error .my-address-picker {
     border: 1px solid #f56c6c;
     border-radius: 3px;
+
     .el-input__inner {
         border-color: #dee3f0;
     }
 }
 
-.el-select-dropdown[x-placement^="bottom"]{
-    margin-top: 0;
-    border-radius: 0;
-    box-shadow: none;
-    border: 1px solid #1e90ff;
-    &.el-autocomplete-suggestion{
-        border: 1px solid #c1c2c3;
-    }
-    .el-select-dropdown__list{
-        padding: 0;
-    }
-    .popper__arrow{
-        display: none;
+/* 富文本组件 */
+.el-form-item.is-error .my-rich-editor {
+    .ke-container {
+        border: 1px solid #f56c6c;
     }
 }
 
-.el-select-dropdown__item{
-    color: #606266;
-    text-align: left;
-    padding-left: 5px;
-    line-height: 20px;
-    height: 20px;
-    &.hover,
-    &.selected{
-        color: #fff;
-        background-color: #1e90ff;
-        font-weight: normal;
-        >span{
-            color: #fff;
-        }
-    }
-}
-
-.el-button.el-button--default{
-    height: 28px;
+.el-button.el-button--default {
+    height: 34px;
     padding: 0 20px;
     background-color: transparent;
-    border-color: #2c78f4;
-    &:hover{
+
+    &:hover {
         background-color: transparent;
-        border-color: #2c78f4;
+        border-color: $btn-primary-color;
     }
-    >span{
+
+    > span {
         line-height: 26px;
         display: inline-block;
-        color: #2c78f4;
+        color: $btn-primary-color;
     }
 }
+
 /*重置button*/
-.el-button.el-button--primary{
-    height: 28px;
+.el-button.el-button--primary {
+    height: 34px;
     padding: 0 20px;
-    background-color: #2c78f4;
-    border-color: #2c78f4;
-    &:hover{
-        background-color: #2c78f4;
-        border-color: #2c78f4;
+    background-color: $btn-primary-color;
+    border-color: $btn-primary-color;
+
+    &:hover {
+        background-color: $btn-primary-color-active;
+        border-color: $btn-primary-color-active;
     }
-    >span{
+
+    > span {
         line-height: 26px;
         display: inline-block;
         color: #fff;
     }
-    &.is-disabled{
+
+    &.is-disabled {
         background-color: #ccc;
         color: #333;
         border-color: #ccc;
-        >span{
+
+        > span {
             color: #333;
         }
     }
+
+    &:active {
+        opacity: .6;
+    }
 }
 
-.el-radio{
-    .el-radio__inner{
+.el-button.el-button--danger {
+
+}
+
+.el-radio {
+    .el-radio__label {
+        padding-left: 5px;
+    }
+
+    .el-radio__inner {
         background-color: #fff;
-        width: 12px;
-        height: 12px;
-        border-color: #aaa;
-        .el-radio__label{
-            font-weight: normal;
-        }
+        //border-color: $theme-font-color;
     }
-    &.is-checked{
-        .el-radio__inner{
-            border-color: #999;
-            background: #eaeaea;
-            &::after{
-                width: 5px;
-                height: 5px;
-                background: #999;
-            }
+    //
+    &.is-checked {
+        .el-radio__inner {
+            border-color: $theme-font-color;
+            background: $theme-font-color;
+        }
+        .el-radio__label {
+            color: $theme-font-color;
         }
     }
 }
-.el-radio__input.is-checked+.el-radio__label {
-    color: #333;
-    font-weight: bold;
-}
-.input-text .el-radio{
-    margin-top: 5px;
-}
 
-/*table*/
-.vui-risk-table-box{
-    thead {
-        th {
-            background-color: #e9eef8;
-            height: 60px;
-            .cell{
-                text-align: center;
-                color: #535b6c;
-            }
-            &.is-leaf{
-                border-top: 1px solid #ccc;
-                border-bottom: 1px solid #ccc;
-            }
+//
+//.el-radio__input.is-checked + .el-radio__label {
+//    color: #333;
+//    font-weight: bold;
+//}
+//
+//.input-text .el-radio {
+//    margin-top: 5px;
+//}
+
+/* 分页器 */
+.el-pagination {
+    text-align: center;
+    margin-top: 10px;
+
+    &.is-background {
+        .el-pager li,
+        .btn-prev {
+            margin: 0 3px;
+            min-width: 25px;
+            line-height: 25px;
+            height: 25px;
         }
     }
-    tbody {
-        tr {
-            &:nth-child(2n){
-                background-color: #e9eef8;
-            }
-            td{
-                text-align: center;
-                height: 40px;
-                padding: 0;
-                .cell{
-                    text-align: center;
-                    color: #535b6c;
-                    font-size: 12px;
-                    > span{
-                        font-size: 12px;
-                    }
-                    .ellipsis{
-                        font-size: 12px;
-                        display: inline-block;
-                        width: 100%;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        vertical-align: middle;
-                    }
-                }
-            }
-            background-color: #fff;
-        }
-    }
-    .el-table--enable-row-hover .el-table__body tr:hover > td{
-        background-color: inherit;
-    }
-    .el-table__fixed-right-patch{
-        background-color: #e9eef8;
+}
+
+/* 加载 */
+.el-loading-mask {
+    //opacity: .3;
+}
+
+.el-icon-loading.rotate-icon {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    -webkit-animation: none;
+    animation: none;
+
+    &:before {
+        content: "";
     }
 }
 
-.el-loading-mask{
-	//opacity: .3;
-}
-
-.el-icon-loading.rotate-icon{
-	display: inline-block;
-	width: 75px;
-	height: 75px;
-	-webkit-animation: none;
-	animation: none;
-	&:before {
-		content: "";
-	}
-}
-
-.el-tooltip__popper.poshytips{
+.el-tooltip__popper.poshytips {
     max-width: 300px;
     line-height: 1.2;
     padding: 4px 5px;
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, .4);
     animation: fade-in .2s;
     animation-fill-mode: both;
-    .popper__arrow{
+
+    .popper__arrow {
+        border-top-color:  rgba(0, 0, 0, .4);
+        &:after{
+            border-top-color: rgba(0, 0, 0, .4);
+        }
     }
 }
 
 @keyframes fade-in {
-    0%{
+    0% {
         opacity: 0;
         transform: translateY(0%);
     }
-    100%{
+    100% {
         opacity: 1;
         transform: translateY(-30%);
     }
 }
 
 
-.el-form-item{
+.el-form-item {
     margin-bottom: 10px;
+}
+
+.el-form-item__label {
+    color: #666;
+}
+
+.no-important .el-form-item__label::before {
+    content: '' !important;
 }
 
 .el-input,
@@ -312,25 +347,34 @@
 .el-radio-group,
 .el-autocomplete,
 .my-address-picker,
-.my-datetime-picker
-{
-    + .el-form-item__error{
-        margin-top: -2px;
+.my-datetime-picker {
+    + .el-form-item__error {
+        margin-top: 0;
     }
 }
-
+.el-checkbox-group + .el-form-item__error{
+    padding-top: 0;
+}
 
 .el-autocomplete-suggestion {
-    li{
+    li {
         padding: 0 8px;
         line-height: 30px;
-        &:hover{
+
+        &:hover {
             background-color: #ebedf1;
         }
     }
-    .el-autocomplete-suggestion__wrap{
+
+    .el-autocomplete-suggestion__wrap {
         padding: 0;
     }
+}
+
+.el-radio-button__inner{
+    height: $input-height;
+    line-height: $input-height - 1;
+    padding: 0 20px;
 }
 
 /*重置日历input样式*/
@@ -338,8 +382,9 @@
     input.el-input__inner {
         padding-right: 30px;
     }
+
     .el-input__icon {
-        line-height: 28px;
+        line-height: $input-height;
     }
 
     .el-input__prefix {
@@ -351,62 +396,70 @@
             color: #333;
         }
     }
+
     .el-input__suffix {
         right: 25px;
     }
 }
 
+.el-checkbox-group{
+    vertical-align: middle;
+    display: inline-block;
+}
+
 .el-checkbox__input.is-checked .el-checkbox__inner,
-.el-checkbox__input.is-indeterminate .el-checkbox__inner{
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
     border-color: $theme-font-color;
     background-color: $theme-font-color;
 }
 
+.el-checkbox__input.is-disabled + span.el-checkbox__label {
+    color: #bbb;
+}
 
-///**/
-///*滚动条整体部分,必须要设置*/
-//::-webkit-scrollbar
-//{
-//    width: 16px;  /*滚动条宽度*/
-//    height: 16px;  /*滚动条高度*/
-//}
-//
-///*定义滚动条轨道 内阴影+圆角*/
-//::-webkit-scrollbar-track
-//{
-//    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-//    border-radius: 10px;  /*滚动条的背景区域的圆角*/
-//    background-color: red;/*滚动条的背景颜色*/
-//}
-//
-///*定义滑块 内阴影+圆角*/
-//::-webkit-scrollbar-thumb
-//{
-//    border-radius: 10px;  /*滚动条的圆角*/
-//    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-//    background-color: green;  /*滚动条的背景颜色*/
-//}
+/* 在 el-form-item 上面直接加上 .no-require*/
+.el-form-item.no-require:not(.is-no-asterisk) > .el-form-item__label:before {
+    content: ''
+}
 
-/*滚动条整体部分,必须要设置*/
-//.el-table__body-wrapper::-webkit-scrollbar {
-//    height: 10px;
-//    background: hsla(0, 0%, 100%, 0.6);
-//}
-//
-///*定义滚动条轨道 内阴影+圆角*/
-//.el-table__body-wrapper::-webkit-scrollbar-track {
-//    height: 10px;
-//    border-radius: 0;
-//    background-color: transparent;
-//}
-///*定义滑块 内阴影+圆角*/
-//.el-table__body-wrapper::-webkit-scrollbar-thumb {
-//    background-color: rgba(95,95,95,.4);
-//    transition: all .2s;
-//    border-radius: 5px;
-//
-//    &:hover {
-//        cursor: pointer;
-//        background-color: rgba(95,95,95, .7);
-//    }
-//}
+/*el-upload*/
+
+.el-upload {
+}
+
+
+.el-upload--picture-card {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    background-color: #fff;
+
+    &:hover,
+    &:focus {
+        border-color: $theme-font-color;
+    }
+    >img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.is-disabled + .el-upload.el-upload--picture-card {
+    background-color: #eee;
+}
+.is-error .el-upload.el-upload--picture-card {
+    border-color: #F56C6C;
+}
+
+.el-upload-list--picture-card {
+    .el-upload-list__item {
+        width: 100px;
+        height: 100px;
+        margin-right: 15px;
+    }
+
+    .el-upload-list__item-preview {
+        color: #fff;
+    }
+}

@@ -2,7 +2,7 @@
 <template>
     <div>
         <div class="welcome-bg"></div>
-        <p class="welcome-words">欢迎进入丰仓创新基金后台系统</p>
+        <p class="welcome-words">欢迎进入后台系统</p>
     </div>
 </template>
 

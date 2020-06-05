@@ -2,11 +2,13 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import mainRouterModule from './modules/mainModule'; // 用户
+import demoModule from './modules/demoModule'; // 演示
 
 Vue.use(Router);
 
 const constantRouterMap = [
     ...mainRouterModule,
+    ...demoModule,
     {
         path: '/login',
         name: 'login',
@@ -19,7 +21,7 @@ const constantRouterMap = [
 ];
 
 const router =  new Router({
-    mode: 'history', // 线上用history模式
+    mode: 'history',
     base: '/',
     scrollBehavior: () => ({
         x: 0,

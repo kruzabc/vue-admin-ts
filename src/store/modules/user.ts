@@ -1,14 +1,10 @@
-const app = {
+const user = {
     state: {
-        token: '',
-        moduleId: '01' // 模块id
+        token: ''
     },
     mutations: {
         SET_TOKEN: (state: any, token: string) => {
             state.token = token;
-        },
-        SET_MODULE_ID: (state: any, moduleId: string) => {
-            state.moduleId = moduleId;
         }
     },
     actions: {
@@ -18,4 +14,4 @@ const app = {
     }
 };
 
-export default app;
+export default user;
