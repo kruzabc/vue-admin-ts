@@ -1,4 +1,4 @@
-# admin
+# vue-admin-ts
 `基于的VueCli4 + TypeScipt3.8的后台管理系统模板`
 
 ## 一、项目初始化
