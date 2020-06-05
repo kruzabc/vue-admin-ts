@@ -1,5 +1,5 @@
 # admin
-`基于的VueCli4 + TypeScipt3.7的多项目后台管理系统`
+`基于的VueCli4 + TypeScipt3.8的后台管理系统模板`
 
 ## 一、项目初始化
 1、克隆原代码及安装依赖包
@@ -9,7 +9,7 @@ git clone https://github.com/kruzabc/vue-admin-ts
 ```
 ```
 #安装依赖
-npm install
+yarn
 ```
 2、修改相关配置
 
@@ -19,7 +19,7 @@ npm install
 SEVER_PORT_APP1 = 8086
 ```
 
-3、运行默认项目1
+3、运行
 ```
-npm run start-app1
+yarn serve
 ```
