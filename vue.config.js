@@ -1,18 +1,15 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
 const path = require('path');
-const dayjs = require('dayjs');
 
 const isProductionEnv = process.env.NODE_ENV === 'production';
 const isDevelopmentEnv = process.env.NODE_ENV === 'development';
 
-
 const runPort = process.env.SEVER_PORT; // API代理到端口
 const apiProxyPath = process.env['DEV_PROXY_' + process.env.API_ENV]; // API代理到端口
 
-
 if (isDevelopmentEnv) {
-    console.log(chalk.green(`正在【开发模式】下启动 ,当前API接口环境：【${["正式环境", "测试环境", "本地环境"][process.env.API_ENV]} 】`));
+    console.log(chalk.green(`正在【开发模式】下启动 ,当前API接口环境：【${["正式环境", "测试环境", "本地环境"][process.env.API_ENV]}】`));
     console.log(`API代理到：${apiProxyPath}`);
 } else if (isProductionEnv) {
     console.log(chalk.green(`正在【生产模式】下编译`));
@@ -36,9 +33,6 @@ module.exports = {
             'vue-router': 'VueRouter',
             'element-ui': '"element-ui"'
         });
-        /* 设置别名*/
-        //config.resolve.alias
-        //   .set('@project', path.join(__dirname, `src/projects/${process.env.RUN_PROJECT_NAME}`));
     },
     css: {
         extract: isProductionEnv,
@@ -54,10 +48,6 @@ module.exports = {
         devtool: false,
         plugins: (() => {
             let pluginsList = [new webpack.SourceMapDevToolPlugin({})];
-
-            pluginsList.push(new webpack.DefinePlugin({
-                'BUILD_VERSION': JSON.stringify(`1.0.0_${dayjs(new Date()).format("MMDDHHmm")}_${isProductionEnv ? "re" : "dev"}`),
-            }));
             return pluginsList;
         })(),
         optimization: {
@@ -72,7 +62,7 @@ module.exports = {
                 ws: false,
                 target: apiProxyPath,
                 changeOrigin: true,
-            },
+            }
         }
     })
 };
